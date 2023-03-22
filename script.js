@@ -51,14 +51,14 @@ function playRound(playerSelection, computerSelection) {
 
 /* Creating a 5-round game of Rock Paper Scissors */
 
-let playerScore = 0;
+/* let playerScore = 0;
 let computerScore = 0;
 
 for (let i = 0; i < 5; i++) {
     let playerSelection = prompt("Please enter a choice - rock, paper or scissors");
     let computerSelection = getComputerChoice();
     console.log(playRound(playerSelection, computerSelection));
- }
+ } */
 
  /* Check winner */
 
