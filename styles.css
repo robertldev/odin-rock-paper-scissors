@@ -51,6 +51,20 @@ body {
     margin: 0;
 }
 
+#play-again {
+    background-color: black;
+    padding: 20px;
+    border: 4px dotted #ffa500;
+    cursor: pointer;
+}
+
+#message-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
 #message-container p {
     font-family: 'Press Start 2P', cursive;
     font-size: 16px;
@@ -70,17 +84,18 @@ body {
     width: 180px;
     height: 120px;
     border: 1px solid #fff;
+    cursor: pointer;
 }
 
-.rock-box {
+#rock-box {
     background-image: url("assets/rock-image.png");
 }
 
-.paper-box {
+#paper-box {
     background-image: url("assets/paper-image.png");
 }
 
-.scissors-box {
+#scissors-box {
     background-image: url("assets/scissors-image.png");
     background-size: cover;
 }

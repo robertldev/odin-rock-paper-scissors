@@ -14,64 +14,105 @@ function getComputerChoice() {
     }
 }
 
-/* Computing a single round */
+/* Adding event listeners to buttons */
+document.getElementById("rock-box").addEventListener("click", function() {
+    playMatch("rock");
+});
+
+document.getElementById("paper-box").addEventListener("click", function() {
+    playMatch("paper");
+});
+
+document.getElementById("scissors-box").addEventListener("click", function() {
+    playMatch("scissors");
+});
+
+
+
+/* Play a single round */
 
 function playRound(playerSelection, computerSelection) {
     const playerCompare = playerSelection.toLowerCase();
     const computerCompare = computerSelection.toLowerCase();
 
     if (playerCompare === computerCompare) {
-        return "This round is a tie!"
+        document.getElementById('last-round-update').innerText = "This round was a tie.";
     }
     else if (playerCompare == "rock" && computerCompare == "scissors") {
         playerScore++;
-        return "You win! Rock beats scissors!"
+        document.getElementById('player-score').innerText = playerScore;
+        document.getElementById('last-round-update').innerText = "You win! Rock beats scissors!";
     }
     else if (playerCompare == "rock" && computerCompare == "paper") {
         computerScore++;
-        return "You lose! Paper beats rock!"
+        document.getElementById('computer-score').innerText = computerScore;
+        document.getElementById('last-round-update').innerText = "You lose! Paper beats rock!";
     }
     else if (playerCompare == "paper" && computerCompare == "rock") {
         playerScore++;
-        return "You win! Paper beats rock!"
+        document.getElementById('player-score').innerText = playerScore;
+        document.getElementById('last-round-update').innerText = "You win! Paper beats rock!";
     }
     else if (playerCompare == "paper" && computerCompare == "scissors") {
         computerScore++;
-        return "You lose! Scissors beats paper!"
+        document.getElementById('computer-score').innerText = computerScore;
+        document.getElementById('last-round-update').innerText = "You lose! Scissors beats paper!";
     }
     else if (playerCompare == "scissors" && computerCompare == "paper") {
         playerScore++;
-        return "You win! Scissors beats paper!"
+        document.getElementById('player-score').innerText = playerScore;
+        document.getElementById('last-round-update').innerText = "You win! Scissors beats paper!";
     }
     else if (playerCompare == "scissors" && computerCompare == "rock") {
         computerScore++;
-        return "You lose! Rock beats scissors!"
+        document.getElementById('computer-score').innerText = computerScore;
+        document.getElementById('last-round-update').innerText = "You lose! Rock beats scissors!";
     }
 }
 
 /* Creating a 5-round game of Rock Paper Scissors */
 
-/* let playerScore = 0;
-let computerScore = 0;
+var roundsPlayed = 0
+var playerScore = 0;
+var computerScore = 0;
 
-for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Please enter a choice - rock, paper or scissors");
-    let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
- } */
+function playMatch(clickedButton) {
+    if (roundsPlayed > 4) return;
 
- /* Check winner */
+    console.log(playRound(clickedButton, getComputerChoice()));
+    roundsPlayed++;
 
-function findWinner() {
-    if (playerScore == computerScore) {
-        return "The game was a tie."
-    } else if (playerScore > computerScore) {
-        return "You won the game!"
-    } else if (computerScore > playerScore) {
-        return "You lost the game."
+    if (roundsPlayed > 4) {
+        if (playerScore == computerScore) {
+            document.getElementById('last-round-update').innerText = "Game over. You drew the game!";
+        } else if (playerScore > computerScore) {
+            document.getElementById('last-round-update').innerText = "Game over. You won the game!";
+        }
+        else if (computerScore > playerScore) {
+            document.getElementById('last-round-update').innerText = "Game over. You lost the game :(";
+        }
+        document.getElementById('current-round').innerText = "Play again?";
+        document.getElementById('current-round').setAttribute("id", "play-again");
+        
+        document.getElementById('play-again').addEventListener("click", function() {
+            playAgain();
+        })
     }
+    else {
+        document.getElementById('current-round').innerText = "Round " + (roundsPlayed + 1);
+    }
+
 }
 
-console.log("You scored " + playerScore);
-console.log("The computer score " + computerScore);
-console.log(findWinner());
+/* Reset the game with the play again button */
+
+function playAgain() {
+    roundsPlayed = 0;
+    playerScore = 0;
+    computerScore = 0;
+    document.getElementById('player-score').innerText = playerScore;
+    document.getElementById('computer-score').innerText = computerScore;
+    document.getElementById('last-round-update').innerText = "Choose an option below to begin the game.";
+    document.getElementById('play-again').setAttribute("id", "current-round");
+    document.getElementById('current-round').innerText = "Round 1";
+}

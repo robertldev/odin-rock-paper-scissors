@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script type="text/javascript"" src="script.js"></script>
+    <script type="text/javascript"" src="script.js" defer></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="scoreboard-container">
         <div id="player-scoreboard">
             <div id="player-score-box">
-                <p>
-                    1
+                <p id="player-score">
+                    0
                 </p>
             </div>
             <p>
@@ -22,8 +22,8 @@
         </div>
         <div id="computer-scoreboard">
             <div id="computer-score-box">
-                <p>
-                    2
+                <p id="computer-score">
+                    0
                 </p>
             </div>
             <p>
@@ -32,18 +32,21 @@
         </div>
     </div>
     <div id="message-container">
-        <p>
-            Round 3
+        <p id="current-round">
+            Round 1
+        </p>
+        <p id="last-round-update">
+            Choose an option below to begin the game.
         </p>
     </div>
     <div id="button-container">
-        <div class="option-selector-box rock-box">
+        <div class="option-selector-box" id="rock-box">
             
         </div>
-        <div class="option-selector-box paper-box">
+        <div class="option-selector-box" id="paper-box">
             
         </div>
-        <div class="option-selector-box scissors-box">
+        <div class="option-selector-box" id="scissors-box">
                
         </div>
     </div>
