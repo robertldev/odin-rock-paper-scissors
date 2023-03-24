@@ -79,7 +79,7 @@ var computerScore = 0;
 function playMatch(clickedButton) {
     if (roundsPlayed > 4) return;
 
-    console.log(playRound(clickedButton, getComputerChoice()));
+    playRound(clickedButton, getComputerChoice());
     roundsPlayed++;
 
     if (roundsPlayed > 4) {
